@@ -1,67 +1,784 @@
-<!doctype html>
-<html lang="en" class="no-js">
+<!DOCTYPE html>
+<html class="no-js" lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Sendroids</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
-	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
-	<script src="js/modernizr.js"></script> <!-- Modernizr -->
-  	
-	<title>3D Curtain Template | Codyhouse</title>
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 </head>
-<body>
-	<section class="cd-section">
-		<div class="cd-block">
-			<h1>3D Curtain Template</h1>
-		</div>
-	</section> <!-- .cd-section -->
 
-	<section class="cd-section">
-		<div class="cd-block">
-			<div class="cd-half-block"></div>
 
-			<div class="cd-half-block">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores eos labore ratione illum excepturi neque sunt blanditiis ducimus soluta quae!
-				</p>
-			</div>
-		</div>
-	</section> <!-- .cd-section -->
+<body id="top">
 
-	<section class="cd-section">
-		<div class="cd-block">
-			<div class="cd-half-block"></div>
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader" class="dots-jump">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 
-			<div class="cd-half-block">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores eos labore ratione illum excepturi neque sunt blanditiis ducimus soluta quae!
-				</p>
-			</div>
-		</div>
-	</section> <!-- .cd-section -->
+    <!-- header
+    ================================================== -->
+    <header class="s-header">
 
-	<section class="cd-section">
-		<div class="cd-block">
-			<div class="cd-half-block"></div>
+        <div class="header-logo">
+            <a class="site-logo" href="index.html">
+                <!--<img src="images/logo.svg" alt="Homepage">-->
+            </a>
+        </div> <!-- end header-logo -->
 
-			<div class="cd-half-block">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores eos labore ratione illum excepturi neque sunt blanditiis ducimus soluta quae!
-				</p>
-			</div>
-		</div>
-	</section> <!-- .cd-section -->
+        <nav class="header-nav">
 
-	<nav>
-		<ul class="cd-vertical-nav">
-			<li><a href="#0" class="cd-prev inactive">Next</a></li>
-			<li><a href="#0" class="cd-next">Prev</a></li>
-		</ul>
-	</nav> <!-- .cd-vertical-nav -->
-<script src="js/jquery-2.1.1.js"></script>
-<script src="js/main.js"></script> <!-- Resource jQuery -->
+            <a href="#0" class="header-nav__close" title="close"><span>关闭</span></a>
+
+            <h3>导航</h3>
+
+            <div class="header-nav__content">
+
+                <ul class="header-nav__list">
+                    <li><a class="smoothscroll"  href="#home" title="home">首页</a></li>
+                    <li><a class="smoothscroll"  href="#about" title="about">关于我们</a></li>
+                    <li><a class="smoothscroll"  href="#services" title="services">解决方案</a></li>
+                    <li><a class="smoothscroll"  href="#works" title="works">案例</a></li>
+                    <li><a class="smoothscroll"  href="#contact" title="contact">联系我们</a></li>
+                </ul>
+
+                <p>专注团队-创新上进-以诚为本-以质取胜</p>
+
+               <!-- <ul class="header-nav__social">
+                    <li>
+                        <a href="#0"><i class="fab fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-behance"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-dribbble"></i></a>
+                    </li>
+                </ul>-->
+
+            </div> <!-- end header-nav__content -->
+
+        </nav> <!-- end header-nav -->
+
+        <a class="header-menu-toggle" href="#0">
+            <span class="header-menu-icon"></span>
+        </a>
+
+    </header> <!-- end s-header -->
+
+
+    <!-- home
+    ================================================== -->
+    <section id="home" class="s-home page-hero target-section" data-parallax="scroll" data-image-src="images/hero-bg.jpg" data-natural-width=3000 data-natural-height=2000 data-position-y=center>
+
+        <div class="grid-overlay">
+            <div></div>
+        </div>
+
+        <div class="home-content">
+
+            <div class="row home-content__main">
+
+                <h1>
+                Sendroids
+                </h1>
+
+                <h3>
+                专门从事软件设计和开发的团队
+                </h3>
+
+                <!--<div class="home-content__video">
+                    <a class="video-link" href="https://player.vimeo.com/video/117310401?color=01aef0&title=0&byline=0&portrait=0" data-lity>
+                        <span class="video-icon"></span>
+                        <span class="video-text">Watch Video</span>
+                    </a>
+                </div>-->
+
+                <div class="home-content__button">
+                    <a href="#about" class="smoothscroll btn btn--primary btn--large">
+                        关于我们
+                    </a>
+                    <a href="#contact" class="smoothscroll btn btn--large">
+                        联系我们
+                    </a>
+                </div>
+
+            </div> <!-- end home-content__main -->
+
+           <!-- <div class="home-content__scroll">
+                <a href="#about" class="scroll-link smoothscroll">
+                    Scroll
+                </a>
+            </div>-->
+
+        </div> <!-- end home-content -->
+
+       <!-- <ul class="home-social">
+            <li>
+                <a href="#0"><i class="fab fa-facebook-f" aria-hidden="true"></i><span>Facebook</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fab fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fab fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fab fa-behance" aria-hidden="true"></i><span>Behance</span></a>
+            </li>
+            <li>
+                <a href="#0"><i class="fab fa-dribbble" aria-hidden="true"></i><span>Dribbble</span></a>
+            </li>
+        </ul>  end home-social -->
+
+    </section> <!-- end s-home -->
+
+
+    <!-- about
+    ================================================== -->
+    <section id="about" class="s-about target-section">
+
+        <div class="row section-header bit-narrow" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">我们是谁</h3>
+                <h1 class="display-1">
+                    晟卓软件科技有限责任公司成立于2016年,注册资金1000万，是一家跨国软件及编程
+                    开发公司，目前公司分别在中国广州和日本东京设立了办事处。 公司有专业的软件开发团队，主要为企业客户开发定制的软件系统，满足客户软件领
+                    域的应用需求，致力于为客户提供网站及管理软件系统的个性化服务和技术支持。
+                </h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row bit-narrow" data-aos="fade-up">
+            <div class="col-full">
+                <p class="lead">我们会为日语、技术单一者提供培训，拥有赴日工作的机会
+                </p>
+            </div>
+        </div> <!-- end about-desc -->
+
+        <div class="row bit-narrow">
+
+            <div class="about-process process block-1-2 block-tab-full">
+
+                <div class="col-block item-process" data-aos="fade-up">
+                    <div class="item-process__text">
+                        <h4 class="item-title">我们的服务</h4>
+                        <p>
+                            满足客户需求，让客户拥有最好的体验
+                        </p>
+                    </div>
+                </div>
+                <div class="col-block item-process" data-aos="fade-up">
+                    <div class="item-process__text">
+                        <h4 class="item-title">我们的团队</h4>
+                        <p>
+                            团队协作是通向成功的保证，专注则让我们更加优秀
+                        </p>
+                    </div>
+                </div>
+                <div class="col-block item-process" data-aos="fade-up">
+                    <div class="item-process__text">
+                        <h4 class="item-title">我们的专业</h4>
+                        <p>
+                            为企业客户开发定制的软件系统，满足客户软件领域的应用需求。 为客户提供网站及管理软件系统的个性化服务和技术支持。
+                        </p>
+                    </div>
+                </div>
+                <div class="col-block item-process" data-aos="fade-up">
+                    <div class="item-process__text">
+                        <h4 class="item-title">我们的信念</h4>
+                        <p>
+                            专注团队-创新上进-以诚为本-以质取胜 通过我们团队的不懈努力和创新精神，提升企业客户网站及软件的实用性
+                        </p>
+                    </div>
+                </div>
+
+            </div> <!-- end process -->
+
+        </div> <!-- end row -->
+
+    </section> <!-- end s-about -->
+
+
+    <!-- services
+    ================================================== -->
+    <section id='services' class="s-services target-section darker">
+
+        <div class="row section-header bit-narrow" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">我们能做的</h3>
+                <h1 class="display-1">
+                    为了提高客户的营销活动的效果 文案、图片、SEO策略、网站分析和运用等 从web设计到咨询 我们都可以为您服务。
+                </h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row bit-narrow services block-1-2 block-tab-full">
+
+            <div class="col-block item-service" data-aos="fade-up">
+                <div class="item-service__icon">
+                    <i class="icon-star"></i>
+                </div>
+                <div class="item-service__text">
+                    <h3 class="item-title">主页设计</h3>
+                    <p>根据客户需求和市场分析制作最合适的网站。 晟卓曾为多个行业制作网站，如：建筑、美容、婚礼、饮食、汽车销售、汽车维修
+                        等。 其中涉及了当下主流的各种网站用途， 如：电子商务、公司主页、促销活动、招聘、宣传品牌、宣传店铺、门户网站、自能手机等。
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-service" data-aos="fade-up">
+                <div class="item-service__icon">
+                    <i class="icon-group"></i>
+                </div>
+                <div class="item-service__text">
+                    <h3 class="item-title">响应式开发</h3>
+                    <p>集中创建页面的图片排版大小，可以智能地根据用户行为以及使用的设备环境(系统平台、 屏幕尺寸、屏幕定向等)进行相
+                        应的响应和调整。响应式网页设计就
+                        是一个网站能够兼容多 个终端——而不是为每个终端做一个特定的版本。这样，我们就可以不必为不断到来的新设备做 专门
+                        的版本设计和开发了。
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-service" data-aos="fade-up">
+                <div class="item-service__icon">
+                    <i class="icon-pie-chart"></i>
+                </div>
+                <div class="item-service__text">
+                    <h3 class="item-title">着落页（流量页）设计</h3>
+                    <p>根据需求，设计潜在用户点击广告或者利用搜索引擎搜索后显示给用户的网页，引导客户在网页上浏览更多相关信息。
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-service" data-aos="fade-up">
+                <div class="item-service__icon">
+                    <i class="icon-image"></i>
+                </div>
+                <div class="item-service__text">
+                    <h3 class="item-title">SEO优化</h3>
+                    <p>不少研究发现，搜索引擎的用户往往只会留意搜索结果最开始的几项条目。通过了解各类搜索引擎
+                        抓取互联网页面、 进行索引以及确定其对特定关键词搜索
+                        结果排名等技术，来对网页进行相关的优化，使其提高搜索引擎排名，从而 提高网站访问量，最终提升网站的销售或宣传的效果。
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-service" data-aos="fade-up">
+                <div class="item-service__icon">
+                    <i class="icon-cube"></i>
+                </div>
+                <div class="item-service__text">
+                    <h3 class="item-title">APP设计(ios/android)</h3>
+                    <p>APP便捷了每个人的生活，APP开发让每个企业都开始了移动信息化进程。
+                        Android安卓开发：覆盖多种智能终端，占据70%市场，企业快速推广APP的第一选择。
+                        IOS苹果开发：瞄准中高端市场，打入APP收费市场，助您获取移动应用第一桶金。
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-block item-service" data-aos="fade-up">
+                <div class="item-service__icon"><i class="icon-lego-block"></i></div>
+                <div class="item-service__text">
+                    <h3 class="item-title">微信公众号二次开发</h3>
+                    <p>微信公众号具有高效抵达、口碑效应、强交互氛围等营销优势，所以很多企业都选择了给自己 的微信公众号进行二
+                        次开发，完善微信公众号的功能，给客户提供更多的功能便利。晟卓帮助 企业实现线上线下互通（O2O），社会化客户关系管理 （SCRM）
+                        ，移动电商，目前深入挖掘的 行业有电商、餐饮、汽车、房产、婚庆、商超、快消、银行、影楼等数百个行业解决方案。
+                    </p>
+                </div>
+            </div>
+
+        </div> <!-- end services -->
+
+    </section> <!-- end s-services -->
+
+
+    <!-- works
+    ================================================== -->
+    <section id="works" class="s-works target-section">
+
+        <div class="row section-header has-bottom-sep narrow target-section" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">我们的案例</h3>
+                <h1 class="display-1">
+               我们努力开发更好的产品，让用户有不一样的体验
+                </h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row masonry-wrap">
+
+            <div class="masonry">
+
+              <!--  <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+
+                      &lt;!&ndash;  <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-shutterbug.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
+                                <img src="images/portfolio/lady-shutterbug.jpg"
+                                     srcset="images/portfolio/lady-shutterbug.jpg 1x, images/portfolio/lady-shutterbug@2x.jpg 2x" alt="">
+                            </a>
+                        </div>
+
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">
+                                Shutterbug
+                            </h3>
+                            <p class="item-folio__cat">
+                                Branding
+                            </p>
+                        </div>
+
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            <i class="icon-link"></i>
+                        </a>
+
+                        <div class="item-folio__caption">
+                            <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
+                        </div>
+
+                    </div>&ndash;&gt;
+                </div> &lt;!&ndash; end masonry__brick &ndash;&gt;-->
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-beetle.jpg" class="thumb-link" title="The Beetle Car" data-size="1050x700">
+                                <img src="images/portfolio/the-beetle.jpg"
+                                     srcset="images/portfolio/the-beetle.jpg 1x, images/portfolio/the-beetle@2x.jpg 2x" alt="">
+                            </a>
+                        </div>
+
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">
+                                汽车4S店管理系统(对日)
+                            </h3>
+                            <p class="item-folio__cat">
+                                该系统是针对汽车维修的WEB后台管理系统，实现对 维修案件全程记录，可有效记录案件，提高效率。
+                            </p>
+                        </div>
+
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            <i class="icon-link"></i>
+                        </a>
+
+                        <div class="item-folio__caption">
+                            <p>项目功能：
+                                数据的增删改查
+                                不同角色之间的权限控制
+                                多条件检索
+                                短信及邮件的发送功能
+                                数据的处理与统计
+                                业务逻辑的控制</p>
+                            <p>项目技术及特点:
+                                该系统基于现在流行的spark框架进行开发
+                                采用C/S结构，使用MVC框架模式，主要使用JAVA8进行开发，
+                                实现页面跳转、数据处理、权限控制等逻辑功能
+                                采用先进的bootstrap实现PC及移动设备网页的自适应
+                                并使用JQUERY控制页面响应，利用AJAX实现前后台的数据传输
+                                使用MYSQL实现对数据库的增删改查
+                                利用selenium实现自动化测试</p>
+                        </div>
+
+                    </div>
+                </div> <!-- end masonry__brick -->
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-woodcraft.jpg" class="thumb-link" title="Woodcraft" data-size="1050x700">
+                                <img src="images/portfolio/woodcraft.jpg"
+                                     srcset="images/portfolio/woodcraft.jpg 1x, images/portfolio/woodcraft@2x.jpg 2x" alt="">
+                            </a>
+                        </div>
+
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">
+                                装潢预算估价系统(对日)
+                            </h3>
+                            <p class="item-folio__cat">
+                                该系统是针对房屋装修，提供热水器、供暖设备等提供预算方案并生成PDF文档。
+                            </p>
+                        </div>
+
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            <i class="icon-link"></i>
+                        </a>
+
+                        <div class="item-folio__caption">
+                            <p>项目涉及的技术点：
+                                该系统基于spring框架进行开发。
+                                采用C/S结构，使用MVC框架模式，主要使用JAVA8进行开发，
+                                实现页面跳转、数据处理、权限控制等逻辑功能；
+                                采用先进的bootstrap实现PC及移动设备网页的自适应；
+                                使用MYSQL实现对数据库的增删改查。
+                            </p>
+                        </div>
+
+                    </div>
+                </div> <!-- end masonry__brick -->
+
+
+
+            <!--    <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-salad.jpg" class="thumb-link" title="Grow Green" data-size="1050x700">
+                                <img src="images/portfolio/salad.jpg"
+                                     srcset="images/portfolio/salad.jpg 1x, images/portfolio/salad@2x.jpg 2x" alt="">
+                            </a>
+                        </div>
+
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">
+                                Salad
+                            </h3>
+                            <p class="item-folio__cat">
+                                Branding
+                            </p>
+                        </div>
+
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            <i class="icon-link"></i>
+                        </a>
+
+                        <div class="item-folio__caption">
+                            <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
+                        </div>
+
+                    </div>
+                </div>  end masonry__brick -->
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-lamp.jpg" class="thumb-link" title="Guitarist" data-size="1050x700">
+                                <img src="images/portfolio/lamp.jpg"
+                                     srcset="images/portfolio/lamp.jpg 1x, images/portfolio/lamp@2x.jpg 2x" alt="">
+                            </a>
+                        </div>
+
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">
+                                医疗项目匹配系统(对日)
+                            </h3>
+                            <p class="item-folio__cat">
+                                该系统是针对提升医疗项目与资金对接效率的系统，实现项目提供方与资金提供方高效对接与匹配，实现全文检索精准匹配。
+                            </p>
+                        </div>
+
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            <i class="icon-link"></i>
+                        </a>
+
+                        <div class="item-folio__caption">
+                            <p>项目功能:
+                                全文检索精准匹配
+                                实时通讯
+                                不同角色之间的权限控制
+                                多条件检索
+                                短信及邮件的发送功能
+                                文件上传以及导出功能
+                                数据的处理与统计
+                                业务逻辑的控制</p>
+                            <p>项目技术及特点：该系统基于现在流行的SpringMVC框架进行开发。
+                                使用SpringMVC+Lucene+WebSocket+Mysql+Redis，主要使用JAVA8进行开发，
+                                实现全文检索匹配、实时通讯、权限控制等逻辑功能；
+                                采用先进的bootstrap实现PC及移动设备网页的自适应，
+                                并使用JQUERY控制页面响应，利用AJAX实现前后台的数据传输；
+                                使用MYSQL实现对数据库的增删改查；
+                            </p>
+                        </div>
+
+                    </div>
+                </div> <!-- end masonry__brick -->
+
+                <div class="masonry__brick" data-aos="fade-up">
+                    <div class="item-folio">
+
+                        <div class="item-folio__thumb">
+                            <a href="images/portfolio/gallery/g-fuji.jpg" class="thumb-link" title="Palmeira" data-size="1050x700">
+                                <img src="images/portfolio/fuji.jpg"
+                                     srcset="images/portfolio/fuji.jpg 1x, images/portfolio/fuji@2x.jpg 2x" alt="">
+                            </a>
+                        </div>
+
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">
+                                资金发放系统
+                            </h3>
+                            <p class="item-folio__cat">
+                                该系统是针对政府部门项目发放资金及管理费用并生成汇总信息表（excel导入/导出）。
+                            </p>
+                        </div>
+
+                        <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                            <i class="icon-link"></i>
+                        </a>
+
+                        <div class="item-folio__caption">
+                            <p>项目涉及的技术点：
+                                该系统基于spring框架进行开发。
+                                采用C/S结构，使用MVC框架模式，主要使用JAVA8进行开发，
+                                实现页面跳转、数据处理、权限控制等逻辑功能；
+                                采用先进的bootstrap实现PC及移动设备网页的自适应；
+                                使用MYSQL实现对数据库的增删改查；
+                                使用Apache POI实现excel导出功能。
+                            </p>
+                        </div>
+
+                    </div>
+                </div> <!-- end masonry__brick -->
+
+            </div> <!-- end masonry -->
+
+        </div> <!-- end masonry-wrap -->
+
+    </section> <!-- end s-works -->
+
+
+    <!-- clients
+    ================================================== -->
+    <section id="clients" class="s-clients target-section darker">
+
+        <div class="grid-overlay">
+            <div></div>
+        </div>
+
+        <div class="row section-header text-center narrow" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">我们的职位</h3>
+                <h1 class="display-1">有以下职位供你选择</h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row clients-wrap" data-aos="fade-up">
+            <div class="col-twelve">
+               <ul class="clients">
+                    <li><a href="work.html">赴日软件开发</a></li><br/>
+                    <li><a href="work.html">Java开发实习生</a></li><br/>
+                    <li><a href="work.html">Java开发工程师</a></li><br/>
+                    <li><a href="work.html">高级软件工程师</a></li><br/><br/>
+                </ul>
+
+                <p class="clients">
+                    <a href="work.html" class="smoothscroll btn btn--primary btn--large" style="text-align: center">
+                        详细信息
+                    </a>
+                </p>
+            </div>
+
+
+
+
+        </div>
+
+
+
+    </section> <!-- end s-clients -->
+
+
+    <!-- testimonies
+    ================================================== -->
+    <section class="s-testimonials">
+
+        <div class="row testimonials narrow">
+
+            <div class="col-full testimonials__slider" data-aos="fade-up">
+                <div class="testimonials__slide">
+                    <p>驻日人才培训项目</p>
+                    <div class="testimonials__author">
+                        培训对象
+                        <span>
+                            1、计算机专业专科或以上应届或非应届毕业生；<br/>
+                            2、日语专业专科或以上应届或非应届毕业生；<br/>
+                            3、本科以下学历的学生需具备：国家工业和信息<br/>
+                               化部举办的“计算机技术与软件专业技术资格（水平）考试”证书.</span>
+                    </div>
+                    <p></p>
+
+                </div> <!-- end testimonials__slide -->
+
+                <div class="testimonials__slide">
+                    <p>驻日人才培训项目</p>
+                    <div class="testimonials__author">
+                        培训内容
+                        <span>
+                            日语，计算机软件工作的必要技能（JAVA语言）
+                        </span>
+                    </div>
+                    <p></p>
+                </div> <!-- end testimonials__slide -->
+
+                <div class="testimonials__slide">
+                    <p>驻日人才培训项目</p>
+                    <div class="testimonials__author">
+                        培训结果
+                        <span>
+                            1、	通过日语水平能力考试，二级水平（JLPT N2);  <br/>
+                            2、	获得从事赴日计算机软件相关工作的必要技能；   <br/>
+                            3、	通过日本工作现场的面试，取得工作资格。      <br/>
+                        </span>
+                    </div>
+                    <p></p>
+                </div> <!-- end testimonials__slide -->
+
+            </div> <!-- end testimonials__slider -->
+
+        </div> <!-- end testimonials -->
+
+    </section> <!-- end s-testimonials -->
+
+
+    <!-- contact
+    ================================================== -->
+    <section id="contact" class="s-contact target-section">
+
+            <div class="grid-overlay">
+                <div></div>
+            </div>
+
+        <div class="row section-header narrow" data-aos="fade-up">
+            <div class="col-full">
+                <h3 class="subhead">保持联系</h3>
+                <h1 class="display-1">想加入我们吗？<br> 请选择以下方式联系</h1>
+            </div>
+        </div> <!-- end section-header -->
+
+        <div class="row contact-main" data-aos="fade-up">
+            <div class="col-full">
+                <p class="contact-email">
+                    <a href="mailto:#0">service@sendroids.com</a>
+                </p>
+                <p class="contact-address">
+                    地址：广州市番禺区盛泰路惠众街21号香港<br/>
+                    番禺工商联谊会大厦十二、十三楼
+                </p>
+                <p class="contact-numbers">
+                    电话：020-84833633
+                </p>
+
+                <!--<ul class="contact-social">
+                    <li>
+                        <a href="#0"><i class="fab fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-behance"></i></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fab fa-dribbble"></i></a>
+                    </li>
+                </ul>-->
+            </div>
+        </div>
+
+    </section> <!-- end s-contact -->
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+        <div class="row">
+            <div class="col-full ss-copyright">
+                <span>© Copyright Sendrods 2018</span>
+                <span>Design by <a>liying</a></span>
+            </div>
+        </div>
+
+        <div class="ss-go-top">
+            <a class="smoothscroll" title="Back to Top" href="#top">顶部</a>
+        </div>
+    </footer>
+
+
+    <!-- photoswipe background
+    ================================================== -->
+    <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
+
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button> <button class="pswp__button pswp__button--share" title=
+                    "Share"></button> <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title=
+                    "Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button> <button class="pswp__button pswp__button--arrow--right" title=
+                "Next (arrow right)"></button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div> <!-- end photoSwipe background -->
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
 </body>
-</html>

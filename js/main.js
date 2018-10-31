@@ -1,157 +1,258 @@
-jQuery(document).ready(function($){
-	//change this value if you want to change the speed of the scale effect
-	var	scaleSpeed = 0.3,
-	//change this value if you want to set a different initial opacity for the .cd-half-block
-		boxShadowOpacityInitialValue = 0.7,
-		animating = false; 
-	
-	//check the media query 
-	var MQ = window.getComputedStyle(document.querySelector('body'), '::before').getPropertyValue('content').replace(/"/g, "").replace(/'/g, "");
-	$(window).on('resize', function(){
-		MQ = window.getComputedStyle(document.querySelector('body'), '::before').getPropertyValue('content').replace(/"/g, "").replace(/'/g, "");
-	});
+/* ===================================================================
+ * Sublime - Main JS
+ *
+ * ------------------------------------------------------------------- */
 
-	//bind the animation to the window scroll event
-	triggerAnimation();
-	$(window).on('scroll', function(){
-		triggerAnimation();
-	});
+(function($) {
 
-	//move to next/previous section
-    $('.cd-vertical-nav .cd-prev').on('click', function(){
-    	prevSection();
-    });
-    $('.cd-vertical-nav .cd-next').on('click', function(){
-    	nextSection();
-    });
-    $(document).keydown(function(event){
-		if( event.which=='38' ) {
-			prevSection();
-			event.preventDefault();
-		} else if( event.which=='40' ) {
-			nextSection();
-			event.preventDefault();
-		}
-	});
+    "use strict";
+    
+    var cfg = {
+        scrollDuration : 800, // smoothscroll duration
+        mailChimpURL   : 'https://facebook.us8.list-manage.com/subscribe/post?u=cdb7b577e41181934ed6a6a44&amp;id=e6957d85dc'   // mailchimp url
+    },
 
-	function triggerAnimation(){
-		if(MQ == 'desktop') {
-			//if on desktop screen - animate sections
-			(!window.requestAnimationFrame) ? animateSection() : window.requestAnimationFrame(animateSection);
-		} else {
-			//on mobile - remove the style added by jQuery 
-			$('.cd-section').find('.cd-block').removeAttr('style').find('.cd-half-block').removeAttr('style');
-		}
-		//update navigation arrows visibility
-		checkNavigation();
-	}
-	
-	function animateSection () {
-		var scrollTop = $(window).scrollTop(),
-			windowHeight = $(window).height(),
-			windowWidth = $(window).width();
-		
-		$('.cd-section').each(function(){
-			var actualBlock = $(this),
-				offset = scrollTop - actualBlock.offset().top,
-				scale = 1,
-				translate = windowWidth/2+'px',
-				opacity,
-				boxShadowOpacity;
+    $WIN = $(window);
 
-			if( offset >= -windowHeight && offset <= 0 ) {
-				//move the two .cd-half-block toward the center - no scale/opacity effect
-				scale = 1,
-				opacity = 1,
-				translate = (windowWidth * 0.5 * (- offset/windowHeight)).toFixed(0)+'px';
+    // Add the User Agent to the <html>
+    // will be used for IE10 detection (Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0))
+    var doc = document.documentElement;
+    doc.setAttribute('data-useragent', navigator.userAgent);
 
-			} else if( offset > 0 && offset <= windowHeight ) {
-				//the two .cd-half-block are in the center - scale the .cd-block element and reduce the opacity
-				translate = 0+'px',
-				scale = (1 - ( offset * scaleSpeed/windowHeight)).toFixed(5),
-				opacity = ( 1 - ( offset/windowHeight) ).toFixed(5);
+    // svg fallback
+    if (!Modernizr.svg) {
+        $(".header-logo img").attr("src", "images/logo.png");
+    }
 
-			} else if( offset < -windowHeight ) {
-				//section not yet visible
-				scale = 1,
-				translate = windowWidth/2+'px',
-				opacity = 1;
 
-			} else {
-				//section not visible anymore
-				opacity = 0;
-			}
-			
-			boxShadowOpacity = parseInt(translate.replace('px', ''))*boxShadowOpacityInitialValue/20;
-			
-			//translate/scale section blocks
-			scaleBlock(actualBlock.find('.cd-block'), scale, opacity);
+   /* Preloader
+    * -------------------------------------------------- */
+    var ssPreloader = function() {
+        
+        $("html").addClass('ss-preload');
 
-			var directionFirstChild = ( actualBlock.is(':nth-of-type(even)') ) ? '-': '+';
-			var directionSecondChild = ( actualBlock.is(':nth-of-type(even)') ) ? '+': '-';
-			if(actualBlock.find('.cd-half-block')) {
-				translateBlock(actualBlock.find('.cd-half-block').eq(0), directionFirstChild+translate, boxShadowOpacity);
-				translateBlock(actualBlock.find('.cd-half-block').eq(1), directionSecondChild+translate, boxShadowOpacity);	
-			}
-			//this is used to navigate through the sections
-			( offset >= 0 && offset < windowHeight ) ? actualBlock.addClass('is-visible') : actualBlock.removeClass('is-visible');		
-		});
-	}
+        $WIN.on('load', function() {
 
-	function translateBlock(elem, value, shadow) {
-		var position = Math.ceil(Math.abs(value.replace('px', '')));
-		
-		if( position >= $(window).width()/2 ) {
-			shadow = 0;	
-		} else if ( position > 20 ) {
-			shadow = boxShadowOpacityInitialValue;
-		}
+            //force page scroll position to top at page refresh
+            $('html, body').animate({ scrollTop: 0 }, 'normal');
 
-		elem.css({
-		    '-moz-transform': 'translateX(' + value + ')',
-		    '-webkit-transform': 'translateX(' + value + ')',
-			'-ms-transform': 'translateX(' + value + ')',
-			'-o-transform': 'translateX(' + value + ')',
-			'transform': 'translateX(' + value + ')',
-			'box-shadow' : '0px 0px 40px rgba(0,0,0,'+shadow+')'
-		});
-	}
+            // will first fade out the loading animation 
+            $("#loader").fadeOut("slow", function() {
+                // will fade out the whole DIV that covers the website.
+                $("#preloader").delay(300).fadeOut("slow");
+            }); 
+            
+            // for hero content animations 
+            $("html").removeClass('ss-preload');
+            $("html").addClass('ss-loaded');
+        
+        });
+    };
 
-	function scaleBlock(elem, value, opac) {
-		elem.css({
-		    '-moz-transform': 'scale(' + value + ')',
-		    '-webkit-transform': 'scale(' + value + ')',
-			'-ms-transform': 'scale(' + value + ')',
-			'-o-transform': 'scale(' + value + ')',
-			'transform': 'scale(' + value + ')',
-			'opacity': opac
-		});
-	}
 
-	function nextSection() {
-		if (!animating) {
-			if ($('.cd-section.is-visible').next().length > 0) smoothScroll($('.cd-section.is-visible').next());
-		}
-	}
+   /* Menu on Scrolldown
+    * ------------------------------------------------------ */
+    var ssMenuOnScrolldown = function() {
+        
+        var menuTrigger = $('.header-menu-toggle');
 
-	function prevSection() {
-		if (!animating) {
-			var prevSection = $('.cd-section.is-visible');
-			if(prevSection.length > 0 && $(window).scrollTop() != prevSection.offset().top) {
-				smoothScroll(prevSection);
-			} else if(prevSection.prev().length > 0 && $(window).scrollTop() == prevSection.offset().top) {
-				smoothScroll(prevSection.prev('.cd-section'));
-			}
-		}
-	}
+        $WIN.on('scroll', function() {
 
-	function checkNavigation() {
-		( $(window).scrollTop() < $(window).height()/2 ) ? $('.cd-vertical-nav .cd-prev').addClass('inactive') : $('.cd-vertical-nav .cd-prev').removeClass('inactive');
-		( $(window).scrollTop() > $(document).height() - 3*$(window).height()/2 ) ? $('.cd-vertical-nav .cd-next').addClass('inactive') : $('.cd-vertical-nav .cd-next').removeClass('inactive');
-	}
+            if ($WIN.scrollTop() > 150) {
+                menuTrigger.addClass('opaque');
+            }
+            else {
+                menuTrigger.removeClass('opaque');
+            }
 
-	function smoothScroll(target) {
-		animating = true;
-        $('body,html').animate({'scrollTop': target.offset().top}, 500, function(){ animating = false; });
-	}
-});
+        });
+    };
+
+
+   /* OffCanvas Menu
+    * ------------------------------------------------------ */
+    var ssOffCanvas = function() {
+
+        var menuTrigger     = $('.header-menu-toggle'),
+            nav             = $('.header-nav'),
+            closeButton     = nav.find('.header-nav__close'),
+            siteBody        = $('body'),
+            mainContents    = $('section, footer');
+
+        // open-close menu by clicking on the menu icon
+        menuTrigger.on('click', function(e){
+            e.preventDefault();
+            siteBody.toggleClass('menu-is-open');
+        });
+
+        // close menu by clicking the close button
+        closeButton.on('click', function(e){
+            e.preventDefault();
+            menuTrigger.trigger('click');
+        });
+
+        // close menu clicking outside the menu itself
+        siteBody.on('click', function(e){
+            if( !$(e.target).is('.header-nav, .header-nav__content, .header-menu-toggle, .header-menu-toggle span') ) {
+                siteBody.removeClass('menu-is-open');
+            }
+        });
+
+    };
+
+
+   /* Masonry
+    * ---------------------------------------------------- */ 
+    var ssMasonryFolio = function () {
+        
+        var containerBricks = $('.masonry');
+
+        containerBricks.imagesLoaded(function () {
+            containerBricks.masonry({
+                itemSelector: '.masonry__brick',
+                resize: true
+            });
+        });
+    };
+
+
+   /* photoswipe
+    * ----------------------------------------------------- */
+    var ssPhotoswipe = function() {
+        var items = [],
+            $pswp = $('.pswp')[0],
+            $folioItems = $('.item-folio');
+
+        // get items
+        $folioItems.each( function(i) {
+
+            var $folio = $(this),
+                $thumbLink =  $folio.find('.thumb-link'),
+                $title = $folio.find('.item-folio__title'),
+                $caption = $folio.find('.item-folio__caption'),
+                $titleText = '<h4>' + $.trim($title.html()) + '</h4>',
+                $captionText = $.trim($caption.html()),
+                $href = $thumbLink.attr('href'),
+                $size = $thumbLink.data('size').split('x'),
+                $width  = $size[0],
+                $height = $size[1];
+        
+            var item = {
+                src  : $href,
+                w    : $width,
+                h    : $height
+            }
+
+            if ($caption.length > 0) {
+                item.title = $.trim($titleText + $captionText);
+            }
+
+            items.push(item);
+        });
+
+        // bind click event
+        $folioItems.each(function(i) {
+
+            $(this).on('click', function(e) {
+                e.preventDefault();
+                var options = {
+                    index: i,
+                    showHideOpacity: true
+                }
+
+                // initialize PhotoSwipe
+                var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
+                lightBox.init();
+            });
+
+        });
+    };
+
+
+   /* slick slider
+    * ------------------------------------------------------ */
+    var ssSlickSlider = function() {
+        
+        $('.testimonials__slider').slick({
+            arrows: false,
+            dots: true,
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            pauseOnFocus: false,
+            autoplaySpeed: 1500
+        });
+    };
+
+
+   /* Smooth Scrolling
+    * ------------------------------------------------------ */
+    var ssSmoothScroll = function() {
+        
+        $('.smoothscroll').on('click', function (e) {
+            var target = this.hash,
+            $target    = $(target);
+            
+                e.preventDefault();
+                e.stopPropagation();
+
+            $('html, body').stop().animate({
+                'scrollTop': $target.offset().top
+            }, cfg.scrollDuration, 'swing').promise().done(function () {
+
+                // check if menu is open
+                if ($('body').hasClass('menu-is-open')) {
+                    $('.header-menu-toggle').trigger('click');
+                }
+
+                window.location.hash = target;
+            });
+        });
+
+    };
+
+
+   /* Alert Boxes
+    * ------------------------------------------------------ */
+    var ssAlertBoxes = function() {
+
+        $('.alert-box').on('click', '.alert-box__close', function() {
+            $(this).parent().fadeOut(500);
+        }); 
+
+    };
+
+
+   /* Animate On Scroll
+    * ------------------------------------------------------ */
+    var ssAOS = function() {
+        
+        AOS.init( {
+            offset: 200,
+            duration: 600,
+            easing: 'ease-in-sine',
+            delay: 300,
+            once: true,
+            disable: 'mobile'
+        });
+
+    };
+
+
+   /* Initialize
+    * ------------------------------------------------------ */
+    (function clInit() {
+
+        ssPreloader();
+        ssMenuOnScrolldown();
+        ssOffCanvas();
+        ssMasonryFolio();
+        ssPhotoswipe();
+        ssSlickSlider();
+        ssSmoothScroll();
+        ssAlertBoxes();
+        ssAOS();
+
+    })();
+
+})(jQuery);
